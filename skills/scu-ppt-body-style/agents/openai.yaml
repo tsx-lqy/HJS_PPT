@@ -1,0 +1,4 @@
+interface:
+  display_name: "科研汇报 PPT 主体风格"
+  short_description: "从三份科研汇报中提炼图文布局、技术讲解和结果论证，独立于模板"
+  default_prompt: "使用 $scu-ppt-body-style，把提供的科研材料组织成图示为主、短句解释、证据支撑结论的 PPT 主体页，保留我指定的模板。"
