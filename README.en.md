@@ -15,18 +15,18 @@ An editable agent skill for paper presentations, lab meetings, system design, ac
 With Node.js and Git installed:
 
 ```bash
-npx skills@latest add tsx-lqy/skill --skill hjs_ppt
+npx skills@latest add tsx-lqy/HJS_PPT --skill hjs_ppt
 ```
 
 Choose your agent when prompted. Installation is project-local by default. For a global Codex installation using regular file copies:
 
 ```bash
-npx skills@latest add tsx-lqy/skill --skill hjs_ppt -a codex -g --copy
+npx skills@latest add tsx-lqy/HJS_PPT --skill hjs_ppt -a codex -g --copy
 ```
 
 For Claude Code, replace `-a codex` with `-a claude-code`. Start a new agent session after installing, or refresh its skill list as directed by that agent. See the [Skills CLI documentation](https://github.com/vercel-labs/skills) for other agents.
 
-Alternatively, [download the ZIP](https://github.com/tsx-lqy/skill/archive/refs/heads/main.zip) and copy the entire `skills/hjs_ppt` folder to your agent's skills directory. Keep the references and images together with `SKILL.md`. Preserve any local customizations before replacing an existing installation.
+Alternatively, [download the ZIP](https://github.com/tsx-lqy/HJS_PPT/archive/refs/heads/main.zip) and copy the entire `skills/hjs_ppt` folder to your agent's skills directory. Keep the references and images together with `SKILL.md`. Preserve any local customizations before replacing an existing installation.
 
 To update installed skills:
 

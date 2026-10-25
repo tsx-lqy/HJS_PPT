@@ -15,7 +15,7 @@
 使用 [Skills CLI](https://github.com/vercel-labs/skills) 安装，需要 Node.js 和 Git：
 
 ```bash
-npx skills@latest add tsx-lqy/skill --skill hjs_ppt
+npx skills@latest add tsx-lqy/HJS_PPT --skill hjs_ppt
 ```
 
 按提示选择你的 AI 工具和安装方式。默认安装到当前项目；添加 `-g` 可安装为用户级 skill。
@@ -26,13 +26,13 @@ npx skills@latest add tsx-lqy/skill --skill hjs_ppt
 Codex：
 
 ```bash
-npx skills@latest add tsx-lqy/skill --skill hjs_ppt -a codex -g --copy
+npx skills@latest add tsx-lqy/HJS_PPT --skill hjs_ppt -a codex -g --copy
 ```
 
 Claude Code：
 
 ```bash
-npx skills@latest add tsx-lqy/skill --skill hjs_ppt -a claude-code -g --copy
+npx skills@latest add tsx-lqy/HJS_PPT --skill hjs_ppt -a claude-code -g --copy
 ```
 
 `--copy` 使用普通文件复制，适合不方便创建符号链接的环境。安装后打开新会话，或按 AI 工具的提示刷新技能列表。
@@ -42,7 +42,7 @@ npx skills@latest add tsx-lqy/skill --skill hjs_ppt -a claude-code -g --copy
 <details>
 <summary>下载 ZIP 后手动安装</summary>
 
-1. [下载仓库 ZIP](https://github.com/tsx-lqy/skill/archive/refs/heads/main.zip) 并解压。
+1. [下载仓库 ZIP](https://github.com/tsx-lqy/HJS_PPT/archive/refs/heads/main.zip) 并解压。
 2. 将 `skills/hjs_ppt` **整个文件夹**复制到你的工具的 skills 目录，不要只复制 `SKILL.md`。
 3. Codex 可使用用户级 `~/.agents/skills/`；Claude Code 可使用 `~/.claude/skills/`。其他工具的目录参见 [Skills CLI 支持列表](https://github.com/vercel-labs/skills/blob/main/docs/agents.md)。
 4. 若已有同名 skill，先保留自己的修改，再选择替换或合并。不要同时安装多份同名 skill。
