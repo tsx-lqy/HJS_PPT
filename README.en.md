@@ -36,12 +36,6 @@ npx skills@latest update
 
 Save local customizations before updating.
 
-## Renaming an existing installation
-
-The skill was renamed from `scu-ppt-body-style` to **`hjs_ppt`**. Install using the new command above, preserve your customizations, and move the old installation out of the skills directory. An update alone may not migrate a renamed skill. Invoke `$hjs_ppt`.
-
-The underscore is intentional. Skills CLI discovery and installation have been verified; strict Agent Skills validators that only accept hyphen-case names will reject it. Repository checks do not establish universal client compatibility.
-
 ## Usage
 
 ```text
