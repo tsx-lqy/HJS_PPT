@@ -6,7 +6,7 @@ import unittest
 from zipfile import ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location('inspector', ROOT / 'skills/scu-ppt-body-style/scripts/inspect_pptx.py')
+spec = importlib.util.spec_from_file_location('inspector', ROOT / 'skills/hjs_ppt/scripts/inspect_pptx.py')
 inspector = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(inspector)
 P = inspector.NS['p']

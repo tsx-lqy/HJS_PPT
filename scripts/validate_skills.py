@@ -19,7 +19,8 @@ def validate(root=ROOT):
         if not header:
             errors.append(f'{entry.relative_to(root)}: missing YAML frontmatter.')
             continue
-        name = re.search(r'^name:\s*([a-z0-9]+(?:-[a-z0-9]+)*)\s*$', header[1], re.M)
+        # hjs_ppt is the maintainer's explicit identifier; other names stay hyphen-case.
+        name = re.search(r'^name:\s*(hjs_ppt|[a-z0-9]+(?:-[a-z0-9]+)*)\s*$', header[1], re.M)
         desc = re.search(r'^description:\s*(\S[^\n]*)$', header[1], re.M)
         if not name or name[1] != entry.parent.name or len(name[1]) > 64:
             errors.append(f'{entry.relative_to(root)}: name must match its directory.')
@@ -27,13 +28,15 @@ def validate(root=ROOT):
             errors.append(f'{entry.relative_to(root)}: require a single-line description of 1–1024 characters.')
         if re.search(r'\[TODO:|\[TBD:', content):
             errors.append(f'{entry.relative_to(root)}: unfinished scaffold.')
-    docs = [*root.glob('*.md'), *(root / 'skills').rglob('*.md')]
+    docs = [*root.glob('*.md'), *(root / 'skills').rglob('*.md'), *(root / 'docs').rglob('*.md')]
     links = 0
     for doc in docs:
         content = doc.read_text(encoding='utf-8')
         if re.search(r'\b[A-Za-z]:[\\/](?:Users|SCUing)[\\/]', content):
             errors.append(f'{doc.relative_to(root)}: machine-specific path in public document.')
-        for target in re.findall(r'!?\[[^\]]*\]\(([^)\s]+)\)', content):
+        targets = re.findall(r'!?\[[^\]]*\]\(([^)\s]+)\)', content)
+        targets += re.findall(r'<img\b[^>]*\bsrc="([^"]+)"', content)
+        for target in targets:
             if re.match(r'^[a-z][a-z0-9+.-]*:', target, re.I) or target.startswith('#'):
                 continue
             dest = (doc.parent / target.split('#')[0]).resolve()
