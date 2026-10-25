@@ -4,7 +4,7 @@
 
 一组小而独立、可以修改和组合的 Agent Skills。当前收录一个科研 PPT 主体风格 skill，适用于论文汇报、实验室组会和系统设计讲解。保留你自己的模板，也支持中文和英文内容。
 
-[English](README.en.md) · [安装](#安装) · [Skill 索引](#skill-索引) · [版式配方](skills/scu-ppt-body-style/references/layouts.md)
+[English](README.en.md) · [安装](#安装) · [用途与例子](skills/scu-ppt-body-style/references/usage-examples.md) · [12 种版式](skills/scu-ppt-body-style/references/layouts.md) · [制作流程](skills/scu-ppt-body-style/references/production.md)
 
 ## 安装
 
@@ -71,7 +71,29 @@ npx skills@latest update
 保持现有页数、封面和页眉页脚，让图、公式和结论之间的关系更清楚。
 ```
 
-提供研究材料、已有图表，以及需要沿用的模板。这个 skill 负责内容组织和视觉规则；生成、编辑及渲染 `.pptx` 仍需要 AI 工具具备相应文件处理能力。仅安装 skill 不会额外安装 PowerPoint，也不会自动生成演示文稿。
+提供研究材料、已有图表，以及需要沿用的模板。这个 skill 提供内容组织、主体风格及材料整理、公式图表、逐页讲稿、渲染检查四类制作流程，并附独立的 PPTX 检查和 Windows PowerPoint 导图脚本。生成和编辑 `.pptx` 仍需要 AI 工具具备相应能力；安装 skill 不会额外安装 PowerPoint 或 PPT Master。
+
+## 排版能解决什么问题
+
+| 你的内容 | 可以采用的方式 | 作用 |
+|---|---|---|
+| 抽象公式或矩阵 | 输入 → 小算例 → 过程 → 公式 | 让变量与实际操作对应 |
+| 单篇论文讲解 | 来源 → 核心机制 → 实验图 → 局限 | 让结论找到证据 |
+| 多种技术路线 | 方案 × 收益 / 代价 | 按同一需求解释选择 |
+| 方法演进或发展史 | 连续时间线 + 当前节点 | 跨页保持参照，避免每页重新找重点 |
+
+例如，讲样本标准差时，先给出明确标注的教学数据 2、3、4，再展示偏差和公式，最后说明它描述样本离散。完整调用提示、约 40 秒讲稿、文献页与方案取舍例子见 [排版用途说明与示例](skills/scu-ppt-body-style/references/usage-examples.md)。
+
+![从具体算例到公式](skills/scu-ppt-body-style/references/images/10-worked-principle.svg)
+
+## 基础制作能力
+
+- **材料整理**：来源页码、图号、数据、条件与结论对应；可提取已有 PPTX 的文字和备注。
+- **可编辑公式与图表**：优先 Office Math、原生图表/表格，保留公式源、变量和原始数据；明确不能原生编辑的对象。
+- **逐页讲稿**：按最终页序讲“看哪里、如何解释、还有什么限制”，写入备注或交付对应 Markdown。
+- **渲染检查**：检查 PPTX 内部关系和对象，实际渲染后逐页看遮挡、小字、公式、图例及模板边界。
+
+可与 [PPT Master](https://github.com/hugohe3/ppt-master) 配合进行材料转换和原生导出，主体排版由本 skill 决定。具体分工、已核对的接口及依赖见 [接入说明](skills/scu-ppt-body-style/references/ppt-master-integration.md)。不捆绑上游引擎；本次没有整合动画、配音或视频。
 
 ## 为什么需要它
 
@@ -87,15 +109,15 @@ npx skills@latest update
 
 | Skill | 用途 | 包含内容 |
 |---|---|---|
-| [scu-ppt-body-style](skills/scu-ppt-body-style/SKILL.md) | 科研 PPT 主体组织与重排 | 字体配色、三种汇报节奏、8 种版式配方、可编辑 SVG 示意、交付核对 |
+| [scu-ppt-body-style](skills/scu-ppt-body-style/SKILL.md) | 科研 PPT 主体组织与基础制作 | 字体配色、汇报节奏、12 种版式、原创 SVG、用途与例子、四类制作流程、检查脚本 |
 
-八种版式：系统总览、主图与公式、系统逐步拆解、结果与指标、多方法矩阵、双方案对比、闭环讲解、并列机制。
+十二种版式：系统总览、主图与公式、系统逐步拆解、结果与指标、多方法矩阵、双方案对比、闭环讲解、并列机制、文献与证据、具体算例、方案取舍、连续时间线。
 
 ![主图与公式的主体组织示意](skills/scu-ppt-body-style/references/images/06-concept-and-equation.svg)
 
 ## 内容与来源
 
-风格规则来自三份科研汇报的主体页观察与重新整理。公开版只分发文字规则和原创版式示意，不包含原始 PPT、论文截图、实验图像、机构标识或作者本机路径。`scu` 保留为 skill 标识，不表示四川大学官方发布或背书。
+风格规则来自五份去重科研汇报、共 110 页的观察与重新整理。本次新增输入共 58 页，其中 19 页 COME 与原输入重复，未重复计数。页数含封面和附录，提炼对象为主体内容。公开版只分发规则、原创示意、教学例子和独立脚本，不包含原始 PPT、论文截图、实验图像、机构标识或作者本机路径。`scu` 保留为 skill 标识，不表示四川大学官方发布或背书。详细口径见 [提炼依据](skills/scu-ppt-body-style/references/design-notes.md)。
 
 仓库的简洁介绍、安装入口和技能索引组织方式参考了 [mattpocock/skills](https://github.com/mattpocock/skills)。本仓库的科研主体风格内容独立整理，未复制其技能正文。
 
@@ -107,6 +129,7 @@ npx skills@latest update
 
 ```bash
 python scripts/validate_skills.py
+python -B -m unittest discover -s tests
 ```
 
 该检查验证目录、元数据、相对链接、SVG 和公开包文件范围；实际成片质量仍需渲染和人工检查。

@@ -51,7 +51,10 @@ def validate(root=ROOT):
         except ET.ParseError as error:
             errors.append(f'{svg.relative_to(root)}: invalid XML: {error}.')
     for file in (root / 'skills').rglob('*'):
-        if file.is_file() and file.name != 'LICENSE' and file.suffix not in {'.md', '.yaml', '.svg'}:
+        if '__pycache__' in file.parts:
+            continue
+        is_helper = file.parent.name == 'scripts' and file.suffix in {'.py', '.ps1'}
+        if file.is_file() and file.name != 'LICENSE' and file.suffix not in {'.md', '.yaml', '.svg'} and not is_helper:
             errors.append(f'{file.relative_to(root)}: unexpected public skill resource type.')
     if not (root / 'LICENSE').is_file():
         errors.append('LICENSE is missing.')
