@@ -20,12 +20,12 @@ python "<skill-dir>/scripts/inspect_pptx.py" input.pptx --text > intake.json
 
 ## 2. 公式与图表：保留含义，也保留修改能力
 
-### 公式
+### 公式：必须使用 MathType
 
 - 记录精确 LaTeX、符号定义、上下标、维度和单位；对照原文，先检查数学含义，再转换。
-- 简单变量或短赋值可用普通文本；分式、矩阵、多行推导优先用 Office Math。矩阵或根号需要额外高度，不能按一行平文本估计边界。
-- 支持该功能的制作工具负责转换；PPT Master 的专用原生标记及限制以其安装版本文档为准，不把 LaTeX 原文直接显示在成片。
-- 无原生数学能力时保留准确的矢量/图片并交付公式源，明确标记不可原生编辑。若用户要求所有公式可编辑，则这属于未完成项，不能降级后宣称完成。
+- 所有公式，包括简单等式、行内表达式、分式、矩阵、多行推导及引用图片中的公式，必须使用可在 MathType 中重新编辑的形式。完整规则、工具边界和验收见 [mathtype.md](mathtype.md)。矩阵或根号需要额外高度，不能按一行平文本估计边界。
+- Office Math/OMML 及 PPT Master 的原生公式导出不能替代 MathType。可以准备精确 LaTeX 供 MathType 输入，但不把 LaTeX 原文、普通文本或纯图片公式作为最终交付。
+- 无 MathType 制作或验证能力时，继续可完成的内容并提供公式清单、源表达式及清楚标注的草稿位置，将 MathType 环节列为未完成项；不静默降级，不宣称成片完成。
 
 ### 数据图和表
 
@@ -56,7 +56,7 @@ python "<skill-dir>/scripts/inspect_pptx.py" input.pptx --text > intake.json
 python "<skill-dir>/scripts/inspect_pptx.py" output.pptx > structure-check.json
 ```
 
-脚本报告每页原生公式、图表、表格、图片和备注计数，以及缺失的内部关系目标。计数是对象存在性证据，不证明公式正确、图表数据可靠或渲染效果合格；图片里还可能有公式。退出码 0 只代表检查范围内未发现结构错误。
+脚本报告每页 Office Math XML、图表、表格、图片和备注计数，以及缺失的内部关系目标。`math_objects` 不统计或认证 MathType 公式。计数不证明公式正确、图表数据可靠或渲染效果合格；图片里还可能有公式。退出码 0 只代表检查范围内未发现结构错误。必须另按公式清单逐个验证 MathType 可编辑性。
 
 Windows 已安装桌面 PowerPoint 时：
 

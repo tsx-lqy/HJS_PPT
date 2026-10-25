@@ -1,4 +1,4 @@
 interface:
-  display_name: "hjs_ppt"
-  short_description: "六份参考提炼十五种科研主体版式，覆盖组会答辩、公式图表、讲稿与渲染检查"
-  default_prompt: "使用 $hjs_ppt，把提供的科研材料组织成图示为主、短句解释、证据支撑结论的 PPT 主体页，保留我指定的模板。"
+  display_name: "HJS_PPT"
+  short_description: "十五种科研主体版式，所有公式使用 MathType，含图表、讲稿与渲染检查"
+  default_prompt: "使用 $hjs_ppt，把提供的科研材料组织成图示为主、短句解释、证据支撑结论的 PPT 主体页，所有公式必须使用可重新编辑的 MathType，保留我指定的模板。"

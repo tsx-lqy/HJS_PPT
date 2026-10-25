@@ -1,12 +1,12 @@
-# hjs_ppt
+# HJS_PPT
 
 Help an AI agent explain research through diagrams, concise explanations, and evidence-supported conclusions.
 
 An editable agent skill for paper presentations, lab meetings, system design, academic interviews, defenses, and research plans. It focuses on slide body layouts while preserving your chosen template.
 
-<img src="docs/images/junjie-she-ai-portrait.jpg" width="220" alt="AI comic portrait of Junjie She">
+<img src="docs/images/hajizhe-avatar.jpg" width="220" alt="哈基折">
 
-**Original research presentations and body-style source material: Junjie She (折俊杰).** Skill distillation, packaging, and maintenance: tsx-lqy. This is an AI comic portrait based on a user-provided photograph, used for author attribution. [Image provenance and prompt](docs/portrait.md). Instructions are written primarily in Chinese; the skill can produce content in the language you request.
+**哈基折**
 
 [中文](README.md) · [15 layout recipes](skills/hjs_ppt/references/layouts.md) · [Purpose and examples](skills/hjs_ppt/references/usage-examples.md) · [Production workflow](skills/hjs_ppt/references/production.md)
 
@@ -65,7 +65,7 @@ The [worked examples](skills/hjs_ppt/references/usage-examples.md) include sampl
 ## Four production capabilities
 
 - **Source intake:** connect page/figure references, data, conditions, and claims; extract slide-local PPTX text and notes with the bundled Python inspector.
-- **Editable equations and charts:** prefer Office Math and native charts/tables, retain exact expressions and data, and disclose image fallbacks.
+- **MathType equations and editable charts:** every equation must be created with MathType and remain editable through MathType in the saved PPTX. Office Math, plain text, and image-only equations are not substitutes. Prefer native charts/tables and retain source data. If MathType is unavailable, report the equation stage as unfinished. See the [rule and example](skills/hjs_ppt/references/mathtype.md).
 - **Speaker notes:** keep notes aligned with final slide order and explain where to look, what it means, and what remains uncertain.
 - **Rendering checks:** inspect package relationships and native-object counts, then render and visually review every page. A Windows PowerPoint export script is included.
 

@@ -1,12 +1,12 @@
-# hjs_ppt
+# HJS_PPT
 
 让 AI 把科研内容讲清楚：图示承担结构，短句解释机制，证据支持结论。
 
 一个可以修改和组合的科研 PPT skill，适用于论文汇报、实验室组会、系统设计、复试答辩和研究计划。保留你自己的模板，支持中文和英文。
 
-<img src="docs/images/junjie-she-ai-portrait.jpg" width="220" alt="折俊杰的 AI 漫画肖像">
+<img src="docs/images/hajizhe-avatar.jpg" width="220" alt="哈基折">
 
-**原始科研汇报与主体风格素材：折俊杰。** Skill 提炼、包装与工程维护：tsx-lqy。上图根据用户提供照片生成，为 AI 漫画肖像，仅用于作者介绍。[图片说明与生成提示词](docs/portrait.md)。
+**哈基折**
 
 [English](README.en.md) · [安装](#安装) · [用途与例子](skills/hjs_ppt/references/usage-examples.md) · [15 种版式](skills/hjs_ppt/references/layouts.md) · [制作流程](skills/hjs_ppt/references/production.md)
 
@@ -81,7 +81,7 @@ npx skills@latest update
 保持现有页数、封面和页眉页脚，让图、公式和结论之间的关系更清楚。
 ```
 
-提供研究材料、已有图表，以及需要沿用的模板。这个 skill 提供内容组织、主体风格及材料整理、公式图表、逐页讲稿、渲染检查四类制作流程，并附独立的 PPTX 检查和 Windows PowerPoint 导图脚本。生成和编辑 `.pptx` 仍需要 AI 工具具备相应能力；安装 skill 不会额外安装 PowerPoint 或 PPT Master。
+提供研究材料、已有图表，以及需要沿用的模板。这个 skill 提供内容组织、主体风格及材料整理、公式图表、逐页讲稿、渲染检查四类制作流程，并附独立的 PPTX 检查和 Windows PowerPoint 导图脚本。生成和编辑 `.pptx` 仍需要 AI 工具具备相应能力；安装 skill 不会额外安装 PowerPoint、MathType 或 PPT Master。
 
 ## 排版能解决什么问题
 
@@ -99,7 +99,7 @@ npx skills@latest update
 ## 基础制作能力
 
 - **材料整理**：来源页码、图号、数据、条件与结论对应；可提取已有 PPTX 的文字和备注。
-- **可编辑公式与图表**：优先 Office Math、原生图表/表格，保留公式源、变量和原始数据；明确不能原生编辑的对象。
+- **MathType 公式与可编辑图表**：所有公式必须使用 MathType，并在保存后的 PPTX 中可重新用 MathType 编辑；图表优先使用原生对象，保留公式源、变量和数据。不能用 Office Math、普通文本或纯图片公式替代。缺少 MathType 时明确报告未完成项，见 [规则与例子](skills/hjs_ppt/references/mathtype.md)。
 - **逐页讲稿**：按最终页序讲“看哪里、如何解释、还有什么限制”，写入备注或交付对应 Markdown。
 - **渲染检查**：检查 PPTX 内部关系和对象，实际渲染后逐页看遮挡、小字、公式、图例及模板边界。
 
