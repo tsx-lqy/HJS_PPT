@@ -2,6 +2,7 @@
 
 from pathlib import Path
 import re
+import json
 import sys
 import xml.etree.ElementTree as ET
 
@@ -57,8 +58,22 @@ def validate(root=ROOT):
         if '__pycache__' in file.parts:
             continue
         is_helper = file.parent.name == 'scripts' and file.suffix in {'.py', '.ps1'}
-        if file.is_file() and file.name != 'LICENSE' and file.suffix not in {'.md', '.yaml', '.svg'} and not is_helper:
+        is_asset = 'assets' in file.relative_to(root / 'skills').parts and file.suffix in {'.json', '.png'}
+        if file.is_file() and file.name != 'LICENSE' and file.suffix not in {'.md', '.yaml', '.svg'} and not is_helper and not is_asset:
             errors.append(f'{file.relative_to(root)}: unexpected public skill resource type.')
+    for catalogue in (root / 'skills').glob('*/assets/catalog.json'):
+        try:
+            assets = json.loads(catalogue.read_text(encoding='utf-8'))['assets']
+            seen = set()
+            for asset in assets:
+                path = (catalogue.parent / asset['file']).resolve()
+                if not path.is_relative_to(catalogue.parent.resolve()) or not path.is_file():
+                    errors.append(f'{catalogue.relative_to(root)}: missing/escaping asset {asset["id"]}.')
+                if asset['id'] in seen or not asset['tags'] or not asset['use'] or asset.get('evidence') is not False:
+                    errors.append(f'{catalogue.relative_to(root)}: invalid conceptual asset metadata {asset["id"]}.')
+                seen.add(asset['id'])
+        except (ValueError, KeyError, TypeError) as error:
+            errors.append(f'{catalogue.relative_to(root)}: invalid catalogue: {error}.')
     if not (root / 'LICENSE').is_file():
         errors.append('LICENSE is missing.')
     return errors, len(entries), links, len(svgs)

@@ -8,7 +8,7 @@ An editable agent skill for paper presentations, lab meetings, system design, ac
 
 **哈基折**
 
-[中文](README.md) · [15 layout recipes](skills/hjs_ppt/references/layouts.md) · [Purpose and examples](skills/hjs_ppt/references/usage-examples.md) · [Production workflow](skills/hjs_ppt/references/production.md)
+[中文](README.md) · [Asset library](skills/hjs_ppt/references/asset-library.md) · [Emphasis](skills/hjs_ppt/references/emphasis.md) · [Image generation](skills/hjs_ppt/references/image-generation.md) · [WPS preview](skills/hjs_ppt/references/wps-preview.md) · [15 layouts](skills/hjs_ppt/references/layouts.md)
 
 ## Installation
 
@@ -56,12 +56,29 @@ Supply the research material, figures, and any template you want preserved. The 
 
 The [worked examples](skills/hjs_ppt/references/usage-examples.md) include sample standard deviation using explicitly illustrative values 2, 3, and 4; a paper evidence page; and a conditional technology choice. The examples include invocation prompts and speaker-note guidance. They contain no source research data.
 
-## Four production capabilities
+## Research assets, selective emphasis, and preview
+
+The package now includes **18 original vector components and one AI-generated concept illustration**, with a searchable catalogue. They cover optical hardware, acquisition, neural layers, image stacks, scanning, timing, and ROI relationships. A separate extractor builds a private, deduplicated image library from the user's PPTX, preserving page and crop metadata without republishing source research.
+
+![Research asset gallery](skills/hjs_ppt/assets/gallery.svg)
+
+Key phrases, meaningful numbers, method differences, and material limitations receive **selective red and bold native text formatting**, while ordinary explanation remains dark. The user's explicit template palette takes priority.
+
+Image2 integration routes necessary conceptual illustrations to the environment's image-generation tool. An explicit model-capable interface can select `gpt-image-2`; a built-in tool with no exposed model identity must be reported as built-in generation only. Generated images never replace experimental evidence. See [workflow and saved example](skills/hjs_ppt/references/image-generation.md).
+
+The Windows WPS helper opens a new read-only snapshot after a meaningful save checkpoint, starting with the first readable draft. It does not overwrite the source, run a background watcher, or promise character-level synchronization. WPS is not installed automatically. The development machine had no WPS; real WPS display and MathType compatibility remain unverified. See [commands and validation limits](skills/hjs_ppt/references/wps-preview.md).
+
+![Material-led composition with selective emphasis](skills/hjs_ppt/assets/examples/material-led-page.svg)
+
+## Production capabilities
 
 - **Source intake:** connect page/figure references, data, conditions, and claims; extract slide-local PPTX text and notes with the bundled Python inspector.
+- **Assets and image generation:** retrieve semantic components, extract private source images, and generate conceptual illustrations when useful.
+- **Selective emphasis:** apply native red/bold text runs to key phrases and connect them to visible diagram details.
 - **MathType equations and editable charts:** every equation must be created with MathType and remain editable through MathType in the saved PPTX. Office Math, plain text, and image-only equations are not substitutes. Prefer native charts/tables and retain source data. If MathType is unavailable, report the equation stage as unfinished. See the [rule and example](skills/hjs_ppt/references/mathtype.md).
 - **Speaker notes:** keep notes aligned with final slide order and explain where to look, what it means, and what remains uncertain.
 - **Rendering checks:** inspect package relationships and native-object counts, then render and visually review every page. A Windows PowerPoint export script is included.
+- **WPS checkpoint preview:** open complete saved snapshots during creation without altering the source or closing user documents.
 
 [PPT Master](https://github.com/hugohe3/ppt-master) can optionally supply source converters and native export. This skill owns body design while the user's template remains authoritative. The [integration guide](skills/hjs_ppt/references/ppt-master-integration.md) documents checked interfaces and dependencies. Its engine is not bundled or installed automatically. Animation, narration, and video are outside this update.
 

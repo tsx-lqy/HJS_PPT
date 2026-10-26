@@ -8,7 +8,7 @@
 
 **哈基折**
 
-[English](README.en.md) · [安装](#安装) · [用途与例子](skills/hjs_ppt/references/usage-examples.md) · [15 种版式](skills/hjs_ppt/references/layouts.md) · [制作流程](skills/hjs_ppt/references/production.md)
+[English](README.en.md) · [安装](#安装) · [素材库](skills/hjs_ppt/references/asset-library.md) · [重点强调](skills/hjs_ppt/references/emphasis.md) · [按需生图](skills/hjs_ppt/references/image-generation.md) · [WPS 预览](skills/hjs_ppt/references/wps-preview.md) · [15 种版式](skills/hjs_ppt/references/layouts.md)
 
 ## 安装
 
@@ -75,7 +75,29 @@ npx skills@latest update
 保持现有页数、封面和页眉页脚，让图、公式和结论之间的关系更清楚。
 ```
 
-提供研究材料、已有图表，以及需要沿用的模板。这个 skill 提供内容组织、主体风格及材料整理、公式图表、逐页讲稿、渲染检查四类制作流程，并附独立的 PPTX 检查和 Windows PowerPoint 导图脚本。生成和编辑 `.pptx` 仍需要 AI 工具具备相应能力；安装 skill 不会额外安装 PowerPoint、MathType 或 PPT Master。
+提供研究材料、已有图表，以及需要沿用的模板。这个 skill 提供内容组织、素材库、重点强调、生图接入、公式图表、讲稿和制作中预览。生成和编辑 `.pptx` 仍需要 AI 工具具备相应能力；安装 skill 不会额外安装 WPS、PowerPoint、MathType、PPT Master 或模型服务。
+
+## 让正文有具体的视觉对象
+
+随包提供 **18 个原创矢量组件＋1 张 AI 概念配图**，涵盖相机、光源、透镜、位移台、探测器、采集模块、网络特征层、图像栈、ROI 放大和时序等。每项都有标签、用途和使用边界，可用脚本检索；也能从用户提供的 PPT 建立任务私有图片库。
+
+![科研视觉素材库](skills/hjs_ppt/assets/gallery.svg)
+
+这类素材用于讲清对象与机制；实际实验图、装置照片和测量数据仍使用本次材料。[素材库与完整例子](skills/hjs_ppt/references/asset-library.md) 说明怎样把器件、网络和局部证据组织成一页。
+
+```text
+使用 $hjs_ppt 重排这份组会 PPT，保留原模板。
+先从提供的 PPT 整理可用素材，再用素材库补充器件和网络示意。
+关键短语、关键数值和方法差异局部标红并加粗，普通解释保留黑色。
+必要时用 image2 生图补充概念插图；不要生成实验结果。
+第一版页面保存后就用 WPS 打开预览，后续按保存节点展示最新版。
+```
+
+![实体素材和局部强调的组合例子](skills/hjs_ppt/assets/examples/material-led-page.svg)
+
+**Image2：**优先调用环境中的生图工具，保留提示词和生成图片；需要明确的 GPT Image 2 模型时使用支持 `gpt-image-2` 的接口。内置工具不暴露模型时只记录“内置生图”，不冒称模型已核实。详见 [工具与示例](skills/hjs_ppt/references/image-generation.md)。
+
+**WPS：**提供 Windows 保存节点预览脚本，打开不占用源文件的只读快照。它不是字符级同步，安装 WPS 后才能真实打开；当前开发环境未安装 WPS，真实显示及 MathType 兼容性仍需安装后验证。[使用命令与边界](skills/hjs_ppt/references/wps-preview.md)。
 
 ## 排版能解决什么问题
 
@@ -93,9 +115,12 @@ npx skills@latest update
 ## 基础制作能力
 
 - **材料整理**：来源页码、图号、数据、条件与结论对应；可提取已有 PPTX 的文字和备注。
+- **素材库与按需生图**：检索具体科研组件、提取任务私有图片，必要时生成概念插图，保留出处与用途。
+- **重点标红加粗**：将关键短语、数值、差异和重要限制落实到原生文本 run；正文有主次，图中有对应位置。
 - **MathType 公式与可编辑图表**：所有公式必须使用 MathType，并在保存后的 PPTX 中可重新用 MathType 编辑；图表优先使用原生对象，保留公式源、变量和数据。不能用 Office Math、普通文本或纯图片公式替代。缺少 MathType 时明确报告未完成项，见 [规则与例子](skills/hjs_ppt/references/mathtype.md)。
 - **逐页讲稿**：按最终页序讲“看哪里、如何解释、还有什么限制”，写入备注或交付对应 Markdown。
 - **渲染检查**：检查 PPTX 内部关系和对象，实际渲染后逐页看遮挡、小字、公式、图例及模板边界。
+- **WPS 制作中预览**：第一版可读页面保存后展示，后续按保存节点打开新快照，源文件不覆盖。
 
 可与 [PPT Master](https://github.com/hugohe3/ppt-master) 配合进行材料转换和原生导出，主体排版由本 skill 决定。具体分工、已核对的接口及依赖见 [接入说明](skills/hjs_ppt/references/ppt-master-integration.md)。不捆绑上游引擎；本次没有整合动画、配音或视频。
 
@@ -113,7 +138,7 @@ npx skills@latest update
 
 | Skill | 用途 | 包含内容 |
 |---|---|---|
-| [hjs_ppt](skills/hjs_ppt/SKILL.md) | 科研 PPT 主体组织与基础制作 | 字体配色、汇报节奏、15 种版式、原创 SVG、用途与例子、四类制作流程、检查脚本 |
+| [hjs_ppt](skills/hjs_ppt/SKILL.md) | 科研 PPT 主体组织与制作 | 15 种版式、18 个矢量组件、AI 配图、重点强调、Image2 接入、WPS 预览、MathType、讲稿与检查脚本 |
 
 十五种版式：系统总览、主图与公式、系统逐步拆解、结果与指标、多方法矩阵、双方案对比、闭环讲解、并列机制、文献与证据、具体算例、方案取舍、连续时间线、个人贡献与证据、研究版图、研究任务与阶段成果。
 
@@ -140,4 +165,4 @@ python -B -m unittest discover -s tests
 
 ## 许可证
 
-[MIT](LICENSE)。适用于本仓库发布的规则、文档、校验脚本及原创 SVG 示意，不授予任何未随仓库发布的原稿、论文图像、字体或商标权利。
+[MIT](LICENSE)。适用于本仓库发布的规则、文档、脚本及原创 SVG 示意；生成图片的说明见 [生图来源](skills/hjs_ppt/references/image-generation.md)。不授予任何未随仓库发布的原稿、论文图像、字体或商标权利。

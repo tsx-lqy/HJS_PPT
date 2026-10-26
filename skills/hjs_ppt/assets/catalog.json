@@ -1,0 +1,308 @@
+{
+  "version": 1,
+  "assets": [
+    {
+      "id": "camera",
+      "title": "工业相机",
+      "tags": [
+        "相机",
+        "成像",
+        "camera",
+        "detector"
+      ],
+      "use": "表示图像采集端；与真实型号照片区分。",
+      "file": "components/camera.svg",
+      "kind": "original-vector",
+      "evidence": false,
+      "license": "MIT"
+    },
+    {
+      "id": "laser",
+      "title": "激光光源",
+      "tags": [
+        "光源",
+        "激光",
+        "laser",
+        "illumination"
+      ],
+      "use": "光源通用符号；波长、功率、光路另按真实系统标注。",
+      "file": "components/laser.svg",
+      "kind": "original-vector",
+      "evidence": false,
+      "license": "MIT"
+    },
+    {
+      "id": "lens",
+      "title": "透镜与支架",
+      "tags": [
+        "透镜",
+        "光学",
+        "lens",
+        "optics"
+      ],
+      "use": "在机制图中表示通用透镜，不暗示具体焦距。",
+      "file": "components/lens.svg",
+      "kind": "original-vector",
+      "evidence": false,
+      "license": "MIT"
+    },
+    {
+      "id": "mirror",
+      "title": "反射镜",
+      "tags": [
+        "反射镜",
+        "光路",
+        "mirror",
+        "optics"
+      ],
+      "use": "表示折转元件；入射出射方向由实际光路确定。",
+      "file": "components/mirror.svg",
+      "kind": "original-vector",
+      "evidence": false,
+      "license": "MIT"
+    },
+    {
+      "id": "sample-slide",
+      "title": "样本载玻片",
+      "tags": [
+        "样本",
+        "载玻片",
+        "specimen",
+        "sample",
+        "slide"
+      ],
+      "use": "概念性样本承载，不是显微实验图。",
+      "file": "components/sample-slide.svg",
+      "kind": "original-vector",
+      "evidence": false,
+      "license": "MIT"
+    },
+    {
+      "id": "translation-stage",
+      "title": "三轴位移台",
+      "tags": [
+        "平台",
+        "位移台",
+        "扫描",
+        "stage",
+        "motion"
+      ],
+      "use": "表示运动平台，方向与坐标标签在 PPT 中编辑。",
+      "file": "components/translation-stage.svg",
+      "kind": "original-vector",
+      "evidence": false,
+      "license": "MIT"
+    },
+    {
+      "id": "transducer",
+      "title": "超声探测器",
+      "tags": [
+        "超声",
+        "探测器",
+        "transducer",
+        "detector"
+      ],
+      "use": "表示接收器和探测区域；区域只用于概念说明。",
+      "file": "components/transducer.svg",
+      "kind": "original-vector",
+      "evidence": false,
+      "license": "MIT"
+    },
+    {
+      "id": "computer",
+      "title": "采集与处理工作站",
+      "tags": [
+        "电脑",
+        "计算",
+        "工作站",
+        "computer",
+        "workstation"
+      ],
+      "use": "表示控制和计算端；屏幕不呈现虚构结果数据。",
+      "file": "components/computer.svg",
+      "kind": "original-vector",
+      "evidence": false,
+      "license": "MIT"
+    },
+    {
+      "id": "daq",
+      "title": "数据采集模块",
+      "tags": [
+        "采集",
+        "卡",
+        "DAQ",
+        "acquisition",
+        "signal"
+      ],
+      "use": "在触发/采集图中表示信号接口。",
+      "file": "components/daq.svg",
+      "kind": "original-vector",
+      "evidence": false,
+      "license": "MIT"
+    },
+    {
+      "id": "neural-layers",
+      "title": "彩色网络特征层",
+      "tags": [
+        "网络",
+        "模型",
+        "神经网络",
+        "特征",
+        "feature",
+        "network",
+        "layers"
+      ],
+      "use": "用有体积的特征层解释网络；通道数和尺寸需据真实结构补充。",
+      "file": "components/neural-layers.svg",
+      "kind": "original-vector",
+      "evidence": false,
+      "license": "MIT"
+    },
+    {
+      "id": "encoder-decoder",
+      "title": "编码与解码",
+      "tags": [
+        "网络",
+        "编码",
+        "解码",
+        "encoder",
+        "decoder"
+      ],
+      "use": "显示压缩再恢复的机制；跳连、尺度和运算需按真实网络编辑。",
+      "file": "components/encoder-decoder.svg",
+      "kind": "original-vector",
+      "evidence": false,
+      "license": "MIT"
+    },
+    {
+      "id": "ensemble",
+      "title": "模型集成",
+      "tags": [
+        "集成",
+        "多模型",
+        "ensemble",
+        "uncertainty"
+      ],
+      "use": "同一输入经不同模型形成多份预测的概念结构。",
+      "file": "components/ensemble.svg",
+      "kind": "original-vector",
+      "evidence": false,
+      "license": "MIT"
+    },
+    {
+      "id": "image-stack",
+      "title": "图像与数据堆栈",
+      "tags": [
+        "图像",
+        "层析",
+        "体数据",
+        "image",
+        "stack",
+        "volume"
+      ],
+      "use": "多帧/多层图像的抽象符号；不是实测切片。",
+      "file": "components/image-stack.svg",
+      "kind": "original-vector",
+      "evidence": false,
+      "license": "MIT"
+    },
+    {
+      "id": "scan-pattern",
+      "title": "栅格扫描",
+      "tags": [
+        "扫描",
+        "轨迹",
+        "raster",
+        "scan"
+      ],
+      "use": "说明扫描顺序；不表示真实速度、分辨率或数据。",
+      "file": "components/scan-pattern.svg",
+      "kind": "original-vector",
+      "evidence": false,
+      "license": "MIT"
+    },
+    {
+      "id": "timing-pulses",
+      "title": "触发与采样时序",
+      "tags": [
+        "时序",
+        "脉冲",
+        "触发",
+        "timing",
+        "pulse",
+        "trigger"
+      ],
+      "use": "逻辑脉冲与采样对应的示意，时间坐标和数值须真实提供。",
+      "file": "components/timing-pulses.svg",
+      "kind": "original-vector",
+      "evidence": false,
+      "license": "MIT"
+    },
+    {
+      "id": "roi-magnifier",
+      "title": "局部放大与对应",
+      "tags": [
+        "局部",
+        "放大",
+        "ROI",
+        "zoom",
+        "crop"
+      ],
+      "use": "叠在真实图像上标记同一 ROI；放大面板必须来自原图裁剪。",
+      "file": "components/roi-magnifier.svg",
+      "kind": "original-vector",
+      "evidence": false,
+      "license": "MIT"
+    },
+    {
+      "id": "uncertainty-cloud",
+      "title": "不确定性概念",
+      "tags": [
+        "不确定度",
+        "噪声",
+        "uncertainty",
+        "noise",
+        "distribution"
+      ],
+      "use": "概念性散布示意；不可当成拟合分布或实验结果。",
+      "file": "components/uncertainty-cloud.svg",
+      "kind": "original-vector",
+      "evidence": false,
+      "license": "MIT"
+    },
+    {
+      "id": "evidence-link",
+      "title": "图像与测量对应",
+      "tags": [
+        "证据",
+        "曲线",
+        "图像",
+        "evidence",
+        "measurement"
+      ],
+      "use": "提醒同一 ROI 对应测量；示意曲线不提供实验数值。",
+      "file": "components/evidence-link.svg",
+      "kind": "original-vector",
+      "evidence": false,
+      "license": "MIT"
+    },
+    {
+      "id": "optical-bench-concept",
+      "title": "AI 光学实验概念配图",
+      "tags": [
+        "生图",
+        "image2",
+        "光学",
+        "器件",
+        "optics",
+        "illustration"
+      ],
+      "use": "用于原理或背景页的概念配图；不能代表真实设备、光路可行性或实验照片。",
+      "file": "generated/optical-bench-concept.png",
+      "kind": "ai-generated",
+      "evidence": false,
+      "license": "See references/image-generation.md",
+      "prompt": "See references/image-generation.md"
+    }
+  ]
+}
